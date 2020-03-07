@@ -28,7 +28,7 @@ Final solution have been rock solid and have received 100% wife approval due to 
 <p align="right"><a href="https://github.com/nelinory/WMC7-DishNetwork-Guide#toc">Back to toc</a></p>
 
 ### Drivers Used
-> Note: All provided download links are from Hauppauge website. All Hauppauge driver downloads seems to be hosted on amazon.
+> **Note:** <br/> All provided download links are from Hauppauge website. Hauppauge driver downloads seems to be hosted on amazon.
 
 ##### Hauppauge WinTV-quadHD PCI
 - Support page: http://www.hauppauge.com/pages/support/support_quadhd.html
@@ -45,3 +45,25 @@ Final solution have been rock solid and have received 100% wife approval due to 
 <p align="right"><a href="https://github.com/nelinory/WMC7-DishNetwork-Guide#toc">Back to toc</a></p>
 
 ### Installation
+>  **Attention:** <br/> Do not install the Hauppauge cards yet !
+1. Perform a clean Windows 7 Home Edition Service Pack 1 install
+2. Install all drivers for all devices including the video card
+3. Perform full Windows Update until no new updates are found. This will require multiple restarts.
+4. Disable Windows Update Service, my reasons for it - dedicated dvr, not used as desktop, behind firewall do not want surprise patches that make it unstable (or reminders to upgrade to Windows 10).
+
+>  **Note:** <br/> The order of steps 5/6/7/8 is very important. If you install Hauppauge Colossus 01414 PCI first and then Hauppauge WinTV-quadHD PCI it will mess up the Hauppauge Colossus 01414 PCI ability to switch channels on Dish thru the IrBlaster.
+
+5. Shutdown computer and install Hauppauge WinTV-quadHD PCI card, then power up - Windows 7 will not be able to find drivers for it. If you look in your device manager, you’ll see the card is unrecognized.
+6. Install Hauppauge WinTV-quadHD PCI drivers from the link [above](#drivers-used). Ensure you see the correct card listed under Device Manager/Sound, video and game controllers. There should be two entries:
+```
+- Hauppauge WinTV-quadHD (Model 1651xx-1, Dual ATSC/QAM, IR)
+- Hauppauge WinTV-quadHD (Model 1651xx-2, Dual ATSC/QAM)
+```
+7. Shutdown computer and install Hauppauge Colossus 01414 PCI card, power up - Windows 7 will not be able to find drivers for it. If you look in your device manager, you’ll see the card is unrecognized.
+8. Install Hauppauge Colossus 01414 PCI Windows 7 driver drivers from the link [above](#drivers-used). Ensure you see the correct card listed under Device Manager/Sound, video and game controllers. There should be two entries:
+```
+- Colossus Capture Device
+- Colossus Encoder Device
+```
+9. Connect the IR blaster to Colossus card by using the port that looks like a stereo mini jack. The Colossus IR blaster comes with two ends: the larger circular one is the receiver for the Hauppauge remote (we will not use it), the smaller rectangular one is what you tape to the front of the Dish Network VIP 211k. If you haven’t used IR blasters before, the smaller end has a red side and a clear side with a sticky. 
+10. <p align="center"><img src="https://github.com/nelinory/WMC7-DishNetwork-Guide/blob/master/Images/ColossusIrBlaster.png" alt="colossus_ir_blaster" width="400"/></p>
