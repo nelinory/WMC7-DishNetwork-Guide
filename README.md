@@ -21,3 +21,4 @@ Final solution have been rock solid and have received 100% wife approval due to 
 - Dish Network VIP 211k (model VIP 211z **WILL NOT WORK** for this setup, we need component output from the receiver)
 - Hauppauge WinTV-quadHD PCI Express TV Tuner Card 1609 (http://newegg.com)
 - Hauppauge Colossus 01414 PCI (Colossus v1) (http://ebay.com) – comes with IR blaster and looks like this:
+<p align="center"><img src="https://github.com/nelinory/WMC7-DishNetwork-Guide/blob/master/Images/ColossusCard.png" alt="colossus_card" width="400"/></p>
