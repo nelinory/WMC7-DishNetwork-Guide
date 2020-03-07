@@ -16,9 +16,9 @@ Final solution have been rock solid and have received the 100% wife approval.
 [Additional Configuration Tips](#additional-configuration-tips)
 
 ### Revision History
-03/07/2020 - Posted on Github
-11/25/2019 - Added tip for HauppaugeIrBlaster utility
-11/05/2019 - Initial version
+03/07/2020 - Posted on Github<br/>
+11/25/2019 - Added tip for HauppaugeIrBlaster utility<br/>
+11/05/2019 - Initial version<br/>
 <p align="right"><a href="https://github.com/nelinory/WMC7-DishNetwork-Guide#toc">Back to toc</a></p>
 
 ### Hardware Used
