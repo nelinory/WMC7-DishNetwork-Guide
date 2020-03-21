@@ -9,6 +9,7 @@ Final solution have been rock solid and have received the 100% wife approval.
 
 ## TOC
 [Revision History](#revision-history)<br/>
+[Known Limitations](#known-limitations)<br/>
 [Hardware Used](#hardware-used)<br/>
 [Drivers Used](#drivers-used)<br/>
 [Prerequisites](#prerequisites)<br/>
@@ -16,10 +17,14 @@ Final solution have been rock solid and have received the 100% wife approval.
 [Additional Configuration Tips](#additional-configuration-tips)
 
 ### Revision History
+03/20/2020 - Added "Known Limitation" section<br/>
 03/07/2020 - Posted on Github<br/>
 11/25/2019 - Added tip for HauppaugeIrBlaster utility<br/>
 11/05/2019 - Initial version<br/>
 <p align="right"><a href="https://github.com/nelinory/WMC7-DishNetwork-Guide#toc">Back to toc</a></p>
+
+### Known Limitations
+- Close captioning is not supported on Hauppauge Colossus 01414 PCI card. It is a driver limitation not a hardware one - Hauppauge never implemented support for it.
 
 ### Hardware Used
 - ASRock FM2A75M-DGS, 8GB RAM, AMD A10-5700 (no HDMI out, using DVI-D to HDMI dongle)
