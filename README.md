@@ -1,7 +1,7 @@
 ﻿# Guide for how to integrate Windows Media Center 7 with DishNetwork Satellite HD receiver
 
 This is a guide for Windows Media Center 7 install with two tuners (Quad OTA + Colossus) hooked up to Dish Satellite VIP211K receiver.
-- TV Guide comes from EPG123 (http://epg123.garyan2.net) with http://www.schedulesdirect.org subscription
+- TV Guide comes from EPG123: http://epg123.garyan2.net with http://www.schedulesdirect.org subscription
 - Netflix supported by "NetflixMCE" by KerrAvon from https://sharepointadept.com/netflix-for-windows-media-center
 - Weather forecast provided by "myForecast" by me (shameless promotion) from https://github.com/nelinory/myForecast
 
@@ -17,6 +17,7 @@ Final solution have been rock solid and have received the 100% wife approval.
 [Additional Configuration Tips](#additional-configuration-tips)
 
 ### Revision History
+01/09/2021 - Extended Windows 7 installation section<br/>
 03/20/2020 - Added "Known Limitation" section<br/>
 03/07/2020 - Posted on Github<br/>
 11/25/2019 - Added tip for HauppaugeIrBlaster utility<br/>
@@ -25,18 +26,19 @@ Final solution have been rock solid and have received the 100% wife approval.
 
 ### Known Limitations
 - Close captioning is not supported on Hauppauge Colossus 01414 PCI card. It is a driver limitation not a hardware one - Hauppauge never implemented support for it.
+<p align="right"><a href="https://github.com/nelinory/WMC7-DishNetwork-Guide#toc">Back to toc</a></p>
 
 ### Hardware Used
 - ASRock FM2A75M-DGS, 8GB RAM, AMD A10-5700 (no HDMI out, using DVI-D to HDMI dongle)
-- AVS Gear HA-IR01SV Infrared MCE remote with receiver (http://newegg.com)
+- AVS Gear HA-IR01SV Infrared MCE remote with receiver: http://newegg.com
 - Dish Network VIP 211k (model VIP 211z **WILL NOT WORK** for this setup, we need component output from the receiver)
-- Hauppauge WinTV-quadHD PCI Express TV Tuner Card 1609 (http://newegg.com)
-- Hauppauge Colossus 01414 PCI (Colossus v1) (http://ebay.com) – comes with IR blaster and looks like this:
+- Hauppauge WinTV-quadHD PCI Express TV Tuner Card 1609: http://newegg.com
+- Hauppauge Colossus 01414 PCI (Colossus v1): http://ebay.com – comes with IR blaster and looks like this:
 <p align="center"><img src="https://github.com/nelinory/WMC7-DishNetwork-Guide/blob/master/Images/ColossusCard.png" alt="colossus_card" width="450"/></p>
 <p align="right"><a href="https://github.com/nelinory/WMC7-DishNetwork-Guide#toc">Back to toc</a></p>
 
 ### Drivers Used
-> **Note:** <br/> All provided download links are from Hauppauge website. Hauppauge driver downloads seems to be hosted on amazon.
+> **Note:** <br/> All provided download links are from Hauppauge website. Hauppauge driver downloads seems to be hosted on Amazon AWS cloud.
 
 ##### Hauppauge WinTV-quadHD PCI
 - Support page: http://www.hauppauge.com/pages/support/support_quadhd.html
@@ -53,15 +55,22 @@ Final solution have been rock solid and have received the 100% wife approval.
 <p align="right"><a href="https://github.com/nelinory/WMC7-DishNetwork-Guide#toc">Back to toc</a></p>
 
 ### Installation
->  **Attention:** <br/> Do not install the Hauppauge cards yet !
-1. Perform a clean Windows 7 Home Edition Service Pack 1 install
+>  **Attention:** <br/> Do not physically install the Hauppauge cards yet !
+1. Perform a clean Windows 7 Home Premium with Service Pack 1 installation
 2. Install all drivers for all devices including the video card
-3. Perform full Windows Update until no new updates are found. This will require multiple restarts.
-4. Disable **Windows Update Service**, my reasons for it - dedicated dvr, not used as desktop, behind firewall do not want surprise patches that make it unstable (or reminders to upgrade to Windows 10).
+3. Perform full Windows Update until no new updates are found. This will require multiple restarts. **Note:** I did skip all optional updates
+- Install April 2015 "Servicing Stack": https://www.microsoft.com/en-us/download/details.aspx?id=46817
+- Install Windows 7 SP1 Convenience Rollup: https://www.catalog.update.microsoft.com/Search.aspx?q=KB3125574
+- If Windows Update throws any errors while checking for updates or is being very slow in detecting new updates then install: http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/09/windows6.1-kb3172605-x64_2bb9bc55f347eee34b1454b50c436eb6fd9301fc.msu
+- Install .NET framework v4 (needed for the EPG123 guide application): https://www.microsoft.com/en-us/download/details.aspx?id=17851
+- Perform full Windows Update until no new updates are found. This will require multiple restarts.
+>  **Note:** <br/> If after a restart you get the alert screen saying "Your Windows 7 PC is out of support" just click "Don't remind me again" link at botton left and it will go away.
+
+4. Install Microsoft Silverlight (needed for "NetflixMCE"): http://go.microsoft.com/fwlink/?LinkID=229321
 
 >  **Note:** <br/> The order of steps 5/6/7/8 is very important. If you install Hauppauge Colossus 01414 PCI first and then Hauppauge WinTV-quadHD PCI it will mess up the Hauppauge Colossus 01414 PCI ability to switch channels on Dish Network receiver thru the IrBlaster.
 
-5. Shutdown computer and install Hauppauge WinTV-quadHD PCI card, then power up - Windows 7 will not be able to find drivers for it. If you look in your device manager, you'll see the card is unrecognized.
+5. Shutdown computer and install Hauppauge WinTV-quadHD PCI card, **connect the antenna cable** then power up - Windows 7 will not be able to find drivers for it. If you look in your device manager, you'll see the card is unrecognized.
 6. Install Hauppauge WinTV-quadHD PCI drivers from the link [above](#drivers-used). Ensure you see the correct card listed under "Device Manager/Sound, video and game controllers". There should be two entries:
 ```
 - Hauppauge WinTV-quadHD (Model 1651xx-1, Dual ATSC/QAM, IR)
@@ -81,12 +90,12 @@ Final solution have been rock solid and have received the 100% wife approval.
 - Run the ir32/IRBlast.exe installer.  This program allows you to configure the IR blasters to work with Dish Network VIP 211k. 
 - We'll come back later and run the mce installer !
  
-11. Go to Start/Programs/Hauppauge WinTV – Run BlastCfg.  Use the following settings: 
+11. Go to Start/Programs/Hauppauge WinTV – Run BlastCfg. Use the following settings: 
 - Region: **North America** 
 - Device Type: **Satellite** 
 - Vendor/Model: **Dish Network 311** (I really have a 211k, but the 311 codes work fine). 
 - CodeSet: **0136** (once saved system will show it as 136)
-- Click "Advanced Config".  I switched the Inter-Digit Delay to 20ms.  Click "Save Settings". 
+- Click "Advanced Config".  I switched the Inter-Digit Delay to **20ms**. Click "Save Settings". 
 - Click "IR Channel Test – Send". You should see the IR blaster blinking red few times.
 <p align="center"><img src="https://github.com/nelinory/WMC7-DishNetwork-Guide/blob/master/Images/BlasterConfiguration.png" alt="colossus_ir_blaster" width="450"/></p>
 
@@ -102,26 +111,29 @@ Final solution have been rock solid and have received the 100% wife approval.
 15. Go to Start/Programs/Hauppauge/HDPVR MC Setup. A dialog comes up. On the MCE Config tab, check the box for the Colossus on the left, then ensure the audio and video inputs are right (mine is Line and Component). Ensure the "Use Internal Blaster" box is checked. The source should be "Satellite". Apply the changes. Reboot again. 
 <p align="center"><img src="https://github.com/nelinory/WMC7-DishNetwork-Guide/blob/master/Images/HauppaugeDeviceCentral.png" alt="colossus_ir_blaster" width="450"/></p>
 
-16. For MCE guide I use EPG123 with a schedule direct subscription (http://www.schedulesdirect.org) (yes, it is worth $25 anually !). To get the application, go to: http://epg123.garyan2.net. After downloading and installation follow the install guide of EPG123 from http://epg123.garyan2.net/install. 
->  **Note:** <br/> The following instructions **DOES NOT** supersede the EPG123 install guide, they just mention what to do in the steps within MCE setup related to Hauppauge Colossus 01414 PCI and Hauppauge WinTV-quadHD OTA tuners.
+16. For MCE guide I use EPG123 with a schedule direct subscription (http://www.schedulesdirect.org) (yes, it is worth $25 anually !). To get the application, go to: http://epg123.garyan2.net. After downloading and installation follow the install guide of EPG123 from http://epg123.garyan2.net/install
+>  **Note:** <br/> The following instructions **DOES NOT** supersede the EPG123 install guide, they just describe what to do in the steps within MCE setup related to Hauppauge Colossus 01414 PCI and Hauppauge WinTV-quadHD OTA tuners.
 - Execute **step 1: Clean start** from EPG123 install guide
 - Execute **step 2: TV Setup** from EPG123 install guide
   - At one-point MCE will ask you for PlayReady. Agree to the terms of service for PlayReady – you need this to record protected content. MCE will download and install PlayReady.
   - Keep in mind that the step **TV Setup/Examining TV signals** may take long time, especially with multiple tuners.
-  -	After a while MCE should find a tuner called "Satellite (1 tuner)". Select: **Yes, configure TV with these results** then click Next button.
+  -	After a while MCE should find some tuners "Satellite (1 tuner), Digital Antenna (ATSC) (4 tuners)". Select: **Yes, configure TV with these results** then click Next button.
   - Click Next button again to confirm setup.
   - MCE will start searching for channels:
     - **Important:** MCE will say it is done (100%), but it's not ! **Wait ~5 minutes** to ensure that it has found all the channels. It will keep adding channels, even though it thinks it is done. 
     - It will add all the Dish Network channels (thousands), not just the ones in your package. **That's OK**. I end up with 9999 channels on the Satellite tuner.
     - Once all the channels are found click Next button.
     - Click Finish button to complete the setup.
-  - I did repeat the step with TV Setup so I can configure the Hauppauge WinTV-quadHD OTA tuner too.
+    - This should completed the setup for both tuners at the same time.
 - Execute **step 3: Setup and Execute EPG123** from EPG123 install guide
   - Before you continue you need to have a list with all channels that are part of your Dish package. To find the list with the channels go to https://www.mydish.com.
 - Finish the EPG123 installation guide
 
 17. Start MCE. If all is good you should be able to see the correct guide for OTA/Dish HD. At this point you should be able to view/record OTA/Dish HD content. Congratulations !
-<p align="right"><a href="https://github.com/nelinory/WMC7-DishNetwork-Guide#toc">Back to toc</a></p>
+18. Disable **Windows Update Service**, my reasons for it - dedicated dvr, not used as desktop, behind firewall do not want surprise patches that make it unstable (or reminders to upgrade to Windows 10).
+19. For Netflix support install "NetflixMCE" plug-in. Follow the install guide in the included PDF file.
+20. For Weather Forecast install "myForecast" plug-in
+<p align="right"><a href="https://github.com/nelinory/WMC7-DishNetwork-Guide#toc">Back to toc</a></p> 
 
 ### Additional Configuration Tips
 1. Each day at around 5:00AM, the Dish receiver calls home to get its update. It then restarts itself, requiring the user to press "Select" to go to a channel. MCE doesn't know it needs to press select, so this causes it to miss channels and recordings.
